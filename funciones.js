@@ -42,10 +42,24 @@ const usuario = { nombre: "Julian", edad: 25, puntos: 100 };
 
 function eliminarPropiedad(objeto, propiedad) {
     const {[propiedad]: _, ...resto} = objeto;
-    return resto
+    return resto;
 
-}
+};
 
 const sinPuntos = eliminarPropiedad(usuario, 'puntos');
 console.log('Nuevo', sinPuntos);
 console.log('Original', usuario);
+
+const eliminarPropiedad2 = (objeto, propiedad) => {
+    const {[propiedad]: _, ...resto} = objeto;
+    return resto;
+};
+
+function eliminarVarias(objeto, ...propiedades) {
+    let copia = {...objetos};
+    propiedades.forEach(p => delete copia[p]);
+    return copia;
+};
+
+const sinVarias = eliminarVarias(usuario, 'edad', 'puntos');
+console.log(sinVarias);
